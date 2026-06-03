@@ -9,7 +9,7 @@
 4. Regression:
   Kompakte Anschauung, worum es sich bei Regression handelt; ebenso Visualisierung von Over- und Underfitting
 5. SVD:
-  Nicht selbst programmiert, Resultate einer Übungsaufgabe in Numerik 1. Bildkompression von Farbbildern
+  Resultate einer Übungsaufgabe in Numerik 1. Bildkompression von Farbbildern zur Veranschaulichung der besten Rang-k Approximation (Eckart-Young-Mirsky Theorem)
 6. SVM:
   Zusammen mit k-NN Algorithmus und PCA verwendet um eine sinnvolle Nutzung der PCA zu veranschaulichen, sowohl in Aspekten der Laufzeit
   wie auch der Genauigkeit. Verwendet wurde der Open-Source Olivetti-Faces Datensatz.

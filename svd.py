@@ -4,9 +4,6 @@ from skimage import io
 from skimage.transform import resize
 
 
-'''
-Dieser Code wurde nicht selber geschrieben. Inspiration aus Numerik-Übungsaufgabe
-'''
 
 def svd_approximation(image, rank):
     """
@@ -50,5 +47,5 @@ def process_image(filename):
     plt.show()
 
 # Usage example
-filename = r"C:\Users\Thorwarth\Downloads\images\images\kandinsky.jpg"  # Replace with your image path
+filename = ""#fill out
 process_image(filename)
