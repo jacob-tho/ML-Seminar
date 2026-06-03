@@ -49,23 +49,30 @@ class Optimizer_SGD:
 
 class Loss_MeanSquared():
     def forward(self, true: np.array, predict: np.array):
-        sample_loss = np.mean(((true - predict.argmax(axis=1))**2), axis=-1)
-        return sample_loss
+        true = true.astype(int)
+        correct = predict[np.arange(len(predict)), true]
+        sample_loss = (np.sum(predict**2, axis=1) - 2*correct +1)/predict.shape[1]
+        return np.mean(sample_loss)
+        #return sample_loss
 
     def backward(self, dvalues, true):
         samples = len(dvalues)
         outputs = len(dvalues[0])
-        self.dinputs = -2 * (true - dvalues) / outputs
+        true = true.astype(int)
+        self.dinputs = 2 * dvalues.copy() / outputs
+        self.dinputs[np.arange(samples),true] -= 2/outputs
+        self.dinputs /= samples
+        #self.dinputs = -2 * (true - dvalues) / outputs
         #Normalisieren, da MEAN square root
-        self.dinputs = self.dinputs / samples #-> Kommt in backpass von activation
+        #self.dinputs = self.dinputs / samples #-> Kommt in backpass von activation
 
-#'''
+'''
 with gzip.open('fashion-mnist.pickled.gz', 'rb') as f:
     train_set, valid_set, test_set = pickle.load(f)
 '''
 with gzip.open('mnist.pickled.gz', 'rb') as f:
     train_set, valid_set, test_set = pickle.load(f)
-'''
+
 train_x, train_y = train_set #Numpy-arrays
 test_x, test_y = test_set
 
